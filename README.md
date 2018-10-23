@@ -18,6 +18,14 @@
 
 ![task1](https://github.com/android-app-development-course/2018-16-LearningForever/blob/master/Screenshots/Tasks/task1.png)
 
+
+
+<br/>
+
+![task1_1](https://github.com/android-app-development-course/2018-16-LearningForever/blob/master/Screenshots/Tasks/task1_1.png)
+
+
+
 ***
 ### 2. Task2
 
