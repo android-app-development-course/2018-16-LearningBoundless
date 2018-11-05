@@ -14,6 +14,12 @@
 ## App创意：基于学习轨迹社交监督App
 ## App名字：学迹无涯
 
+**初步Demo结构：**
+
+https://pro.modao.cc/app/26JJO6MOG677U0UaSUCmUgPUwm6ipRm#screen=s5FD372FF011539863219315
+
+
+
 
 ## 《Tasks》
 ### 1. Task1
