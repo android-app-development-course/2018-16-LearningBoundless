@@ -4,6 +4,8 @@
 
 <br/>
 
+## App创意：基于学习轨迹社交监督App
+
 ## 《Group members》
 
 
@@ -11,14 +13,24 @@
 
 ***
 
-## App创意：基于学习轨迹社交监督App
-## App名字：学迹无涯
 
-**初步Demo结构：**
+## 《App Name》
+
+**学迹无涯**
+
+***
+
+## 《View Structure》
 
 https://pro.modao.cc/app/26JJO6MOG677U0UaSUCmUgPUwm6ipRm#screen=s5FD372FF011539863219315
 
+***
 
+
+## 《Promotion Channel》
+![promotion](https://github.com/android-app-development-course/2018-16-LearningBoundless/blob/master/Screenshots/Project/promotion.jpg)
+
+***
 
 
 ## 《Tasks》
@@ -45,3 +57,4 @@ https://pro.modao.cc/app/26JJO6MOG677U0UaSUCmUgPUwm6ipRm#screen=s5FD372FF0115398
 
 
 
+《》
