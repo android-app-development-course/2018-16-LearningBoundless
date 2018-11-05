@@ -13,6 +13,7 @@
 > [@WuchangI](https://github.com/Yuziquan), [@陈铭海](https://github.com/chenminghai), [@SeanLiaoy](https://github.com/SeanLiaoy), [@ticktockKK](https://github.com/ticktockKK)
 
 <br/>
+
 ***
 
 
@@ -21,6 +22,7 @@
 **学迹无涯**
 
 <br/>
+
 ***
 
 ## 《App Feature》
@@ -29,6 +31,7 @@
 
 
 <br/>
+
 ***
 
 ## 《View Structure》
@@ -36,6 +39,7 @@
 https://pro.modao.cc/app/26JJO6MOG677U0UaSUCmUgPUwm6ipRm#screen=s5FD372FF011539863219315
 
 <br/>
+
 ***
 
 
@@ -43,6 +47,7 @@ https://pro.modao.cc/app/26JJO6MOG677U0UaSUCmUgPUwm6ipRm#screen=s5FD372FF0115398
 ![promotion](https://github.com/android-app-development-course/2018-16-LearningBoundless/blob/master/Screenshots/Project/promotion.jpg)
 
 <br/>
+
 ***
 
 
@@ -67,6 +72,7 @@ https://pro.modao.cc/app/26JJO6MOG677U0UaSUCmUgPUwm6ipRm#screen=s5FD372FF0115398
 ![task2](https://github.com/android-app-development-course/2018-16-LearningBoundless/blob/master/Screenshots/Tasks/task2.png)
 
 <br/>
+
 ***
 
 
