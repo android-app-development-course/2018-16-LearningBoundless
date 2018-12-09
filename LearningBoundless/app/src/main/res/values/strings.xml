@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">LearningBoundless</string>
+    <string name="app_name">学迹无涯</string>
+
+    <string name="splash_title">学迹无涯</string>
+
+    <string name="please_login">请登录</string>
+    <string name="user_name">用户名</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="forgot_your_password">忘记密码？</string>
+
+
+    <string name="please_register">请注册</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="register">注册</string>
+
+
+    <string name="not_empty_user_name_or_password">输入的用户名或密码不能为空！</string>
+    <string name="login_success">登录成功！</string>
+    <string name="login_failure">登录失败！</string>
+    <string name="register_success">注册成功！</string>
+    <string name="register_failure">注册失败！</string>
+    <string name="confirm_error">您两次输入的密码不一致！</string>
+
+
+
 </resources>
