@@ -59,9 +59,8 @@
 >   >
 >   > 在Fragment中：String str = getActivity().getResources().getString(R.string.str_name);
 >   >
->   > 通用：String str = MyApplication.getGlobalApplication().getResources().getString(R.string.str_name);
+>   > 通用：String str = MyApplication.getGlobalApplication().getResources().getString(R.string.str_name);​
 >
-> * ​
 
 
 
