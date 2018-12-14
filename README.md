@@ -41,6 +41,8 @@
 
 > * 项目中的所有的活动类（Activity）均要继承自**BaseActivity**，所有的碎片类（Fragment）均要继承自**BaseFragment**。如需在特定Activity或Fragment子类中实现特定逻辑，可以 Override 基类的 getContentLayoutId()、initWidget() 、initData()等方法；
 >
+> * 获取控件实例尽量避免使用**findViewById**，借助**ButterKnife**，改用注解方式**@BindView**进行依赖注入获取；
+>
 > * 项目中但凡使用到网络部分，即向后台发送请求以获取响应，均需借助网络封装类**SendMessageManager**的**getXXX**接口，响应内容可以随时随地在任何Activity和Fragment通过注册**EventBus**实例来订阅获取，从而渲染界面；
 >
 > * 所有网络响应数据实体类均以**xxxResponseInfo**命名；
