@@ -19,7 +19,6 @@ public class MyApplication extends Application {
         super.onCreate();
 
         initTypefaceUtil();
-
     }
 
     /**

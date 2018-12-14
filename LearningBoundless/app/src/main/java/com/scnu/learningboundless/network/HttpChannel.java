@@ -26,12 +26,10 @@ public class HttpChannel {
     private ApiService apiService;
 
     public static HttpChannel getInstance() {
-
         return httpChannel == null ? httpChannel = new HttpChannel() : httpChannel;
     }
 
     private HttpChannel() {
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_REQUEST_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -44,7 +42,6 @@ public class HttpChannel {
 
 
     public ApiService getApiService() {
-
         return apiService;
     }
 

@@ -12,6 +12,17 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 public class RetrofitUtils {
 
+    private static RetrofitUtils retrofitUtils;
+
+
+    public static RetrofitUtils getInstance() {
+        return retrofitUtils == null ? retrofitUtils = new RetrofitUtils() : retrofitUtils;
+    }
+
+
+    private RetrofitUtils() {
+    }
+
     /**
      * 获取一个带有日志拦截器的OkHttpClient实例
      *

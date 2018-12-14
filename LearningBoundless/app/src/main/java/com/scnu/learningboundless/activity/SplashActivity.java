@@ -1,37 +1,21 @@
 package com.scnu.learningboundless.activity;
 
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.scnu.learningboundless.R;
+import com.scnu.learningboundless.base.BaseActivity;
 import com.scnu.learningboundless.utils.TypefaceUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class SplashActivity extends AppCompatActivity {
-
-    private static final String TAG = "SplashActivity";
-
-    /**
-     * 第三方字体
-     */
-    private Typeface mTypeface;
+public class SplashActivity extends BaseActivity {
 
     @BindView(R.id.tv_splash_title)
-    TextView mTvSplashTitle;
+    protected TextView mTvSplashTitle;
 
-    TextView textView;
-
-    private Handler mHandler = new Handler() {
+    protected Handler mHandler = new Handler() {
 
         @Override
         public void handleMessage(Message msg) {
@@ -47,23 +31,26 @@ public class SplashActivity extends AppCompatActivity {
     };
 
 
+    /**
+     * 得到当前Activity对应的布局文件的id
+     *
+     * @return
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected int getContentLayoutId() {
+        return R.layout.activity_splash;
+    }
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
 
-        ButterKnife.bind(this);
-
-        initTransparentStatusBar();
+    @Override
+    protected void initWidget() {
+        super.initWidget();
 
         initTypefaceOfTitle();
-
 
         // 发送2s的延时消息
         mHandler.sendMessageDelayed(Message.obtain(), 2000);
     }
-
 
     @Override
     protected void onDestroy() {
@@ -75,33 +62,9 @@ public class SplashActivity extends AppCompatActivity {
 
 
     /**
-     * 初始化透明状态栏
-     */
-    private void initTransparentStatusBar() {
-
-        // 实现透明状态栏效果
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-
-            decorView.setSystemUiVisibility(option);
-
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
-
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-    }
-
-
-    /**
      * 初始化启动页的标题的字体
      */
     private void initTypefaceOfTitle() {
-
         mTvSplashTitle.setTypeface(TypefaceUtils.getInstance().getTypeface1());
     }
 
@@ -111,5 +74,6 @@ public class SplashActivity extends AppCompatActivity {
      */
     private void toLoginOrMain() {
 
+        LoginActivity.actionStart(this);
     }
 }

@@ -4,11 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.transition.Transition;
@@ -21,67 +17,49 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.scnu.learningboundless.R;
+import com.scnu.learningboundless.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
+
     @BindView(R.id.et_user_name)
-    EditText mEtUserName;
+    protected EditText mEtUserName;
 
     @BindView(R.id.et_password)
-    EditText mEtPassword;
+    protected EditText mEtPassword;
 
     @BindView(R.id.et_confirm_password)
-    EditText mEtConfirmPassword;
+    protected EditText mEtConfirmPassword;
 
     @BindView(R.id.btn_register)
-    Button mBtnRegister;
+    protected Button mBtnRegister;
 
     @BindView(R.id.fab_x)
-    FloatingActionButton mFabX;
+    protected FloatingActionButton mFabX;
 
     @BindView(R.id.cv_register)
-    CardView mCvRegister;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-
-        ButterKnife.bind(this);
-
-        initTransparentStatusBar();
-
-        ShowEnterAnimation();
-    }
+    protected CardView mCvRegister;
 
 
     /**
-     * 初始化透明状态栏
+     * 得到当前Activity对应的布局文件的id
+     *
+     * @return
      */
-    private void initTransparentStatusBar() {
-
-        // 实现透明状态栏效果
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-
-            decorView.setSystemUiVisibility(option);
-
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
-
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.activity_register;
     }
 
+
+    @Override
+    protected void initWidget() {
+        super.initWidget();
+
+        ShowEnterAnimation();
+    }
 
     @OnClick({R.id.btn_register, R.id.fab_x})
     public void handleAllClick(View view) {
@@ -118,8 +96,6 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, getResources().getString(R.string.confirm_error), Toast.LENGTH_SHORT).show();
             return;
         }
-
-
     }
 
 
@@ -153,7 +129,6 @@ public class RegisterActivity extends AppCompatActivity {
             public void onTransitionResume(Transition transition) {
 
             }
-
 
         });
     }

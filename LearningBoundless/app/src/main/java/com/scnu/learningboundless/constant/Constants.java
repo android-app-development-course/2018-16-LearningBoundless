@@ -6,8 +6,8 @@ package com.scnu.learningboundless.constant;
 
 public class Constants {
 
-    public static final String BASE_REQUEST_URL = "http://39.108.122.17/";
-    public static final String GET_LOGIN_STATUS_URL = "login.php";
-    public static final String GET_REGISTER_STATUS_URL = "register.php";
+    public static final String BASE_REQUEST_URL = "http://119.23.227.96/LB/";
+    public static final String GET_LOGIN_STATUS_URL = "login";
+    public static final String GET_REGISTER_STATUS_URL = "register";
 
 }

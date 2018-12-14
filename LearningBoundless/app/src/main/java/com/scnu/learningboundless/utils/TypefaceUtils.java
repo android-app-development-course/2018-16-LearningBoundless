@@ -9,19 +9,16 @@ import android.graphics.Typeface;
 
 public class TypefaceUtils {
 
-    private static TypefaceUtils sTypefaceUtils = new TypefaceUtils();
+    private static TypefaceUtils typefaceUtils;
     private Context mContext;
     private Typeface typeface1;
 
+    public static TypefaceUtils getInstance() {
+        return typefaceUtils == null ? typefaceUtils = new TypefaceUtils() : typefaceUtils;
+    }
 
     private TypefaceUtils() {
     }
-
-    public static TypefaceUtils getInstance() {
-
-        return sTypefaceUtils;
-    }
-
 
     public void init(Context context) {
 

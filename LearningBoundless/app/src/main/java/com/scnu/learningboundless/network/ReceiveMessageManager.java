@@ -16,7 +16,6 @@ public class ReceiveMessageManager {
     private static ReceiveMessageManager receiveMessageManager;
 
     public static ReceiveMessageManager getInstance() {
-
         return receiveMessageManager == null ? receiveMessageManager = new ReceiveMessageManager() : receiveMessageManager;
     }
 
@@ -34,15 +33,14 @@ public class ReceiveMessageManager {
 
         switch (appendUrl) {
 
-            case "login.php":
+            case "login":
 
                 LoginResponseInfo loginResponseInfo = (LoginResponseInfo) baseResponseInfo;
                 EventBus.getDefault().post(loginResponseInfo);
 
                 break;
 
-
-            case "register.php":
+            case "register":
 
                 RegisterResponseInfo registerResponseInfo = (RegisterResponseInfo) baseResponseInfo;
                 EventBus.getDefault().post(registerResponseInfo);

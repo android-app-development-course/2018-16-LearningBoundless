@@ -25,7 +25,7 @@ public interface ApiService {
      * @return
      */
     @FormUrlEncoded
-    @POST("login.php")
+    @POST("login")
     Observable<LoginResponseInfo> getLoginStatus(@Field("email") String email, @Field("password") String password);
 
 
@@ -38,7 +38,7 @@ public interface ApiService {
      * @return
      */
     @FormUrlEncoded
-    @POST("register.php")
+    @POST("register")
     Observable<RegisterResponseInfo> getRegisterStatus(@Field("name") String username, @Field("email") String email,
                                                        @Field("password") String password);
 

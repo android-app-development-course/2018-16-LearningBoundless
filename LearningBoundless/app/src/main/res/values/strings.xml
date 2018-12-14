@@ -23,5 +23,9 @@
     <string name="confirm_error">您两次输入的密码不一致！</string>
 
 
+    <string name="task">待办任务</string>
+    <string name="message">消息</string>
+    <string name="friends">我的好友</string>
+    <string name="statistics">统计数据</string>
 
 </resources>

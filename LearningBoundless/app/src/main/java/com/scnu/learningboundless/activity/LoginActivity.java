@@ -3,12 +3,8 @@ package com.scnu.learningboundless.activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.transition.Explode;
@@ -18,74 +14,57 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import com.scnu.learningboundless.R;
+import com.scnu.learningboundless.base.BaseActivity;
 import com.scnu.learningboundless.utils.TypefaceUtils;
 
-public class LoginActivity extends AppCompatActivity {
+import butterknife.BindView;
+import butterknife.OnClick;
+
+public class LoginActivity extends BaseActivity {
+
     @BindView(R.id.tv_login_title)
-    TextView mTvLoginTitle;
+    protected TextView mTvLoginTitle;
 
     @BindView(R.id.et_user_name)
-    EditText mEtUserName;
+    protected EditText mEtUserName;
 
     @BindView(R.id.et_password)
-    EditText mEtPassword;
+    protected EditText mEtPassword;
 
     @BindView(R.id.btn_login)
-    Button mBtnLogin;
+    protected Button mBtnLogin;
 
     @BindView(R.id.fab_plus)
-    FloatingActionButton mFabPlus;
+    protected FloatingActionButton mFabPlus;
 
     @BindView(R.id.cv_login)
-    CardView mCvLogin;
+    protected CardView mCvLogin;
+
+
+    /**
+     * 得到当前Activity对应的布局文件的id
+     *
+     * @return
+     */
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.activity_login;
+    }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        ButterKnife.bind(this);
-
-        initTransparentStatusBar();
+    protected void initWidget() {
+        super.initWidget();
 
         initTypefaceOfTitle();
     }
 
 
     /**
-     * 初始化透明状态栏
-     */
-    private void initTransparentStatusBar() {
-
-        // 实现透明状态栏效果
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-
-            decorView.setSystemUiVisibility(option);
-
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
-
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-    }
-
-    /**
      * 初始化登录界面的标题的字体
      */
     private void initTypefaceOfTitle() {
-
         mTvLoginTitle.setTypeface(TypefaceUtils.getInstance().getTypeface1());
     }
 
@@ -118,7 +97,6 @@ public class LoginActivity extends AppCompatActivity {
      * 执行登录操作
      */
     private void login() {
-
         Explode explode = new Explode();
         explode.setDuration(500);
 
@@ -135,6 +113,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        Intent intent= new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent, oc2.toBundle());
 
     }
 
