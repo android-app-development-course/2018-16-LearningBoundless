@@ -70,7 +70,7 @@
 
 
 ## 4. Promotion Channel
-![promotion](https://github.com/android-app-development-course/2018-16-LearningBoundless/blob/master/Screenshots/Project/promotion.jpg)
+![promotion](/Screenshots/Project/promotion.jpg)
 
 <br/>
 
