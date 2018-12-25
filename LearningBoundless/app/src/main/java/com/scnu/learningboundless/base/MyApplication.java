@@ -3,6 +3,8 @@ package com.scnu.learningboundless.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.hyphenate.chat.EMOptions;
+import com.hyphenate.easeui.EaseUI;
 import com.scnu.learningboundless.utils.TypefaceUtils;
 
 /**
@@ -18,8 +20,25 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        sContext = this;
+
+        initEaseUI();
+
         initTypefaceUtil();
     }
+
+    /**
+     * 初始化环信EaseUI
+     */
+    public void initEaseUI() {
+        EMOptions options = new EMOptions();
+
+        // 设置为需要对方同意后才接受好友邀请
+        options.setAcceptInvitationAlways(false);
+
+        EaseUI.getInstance().init(this, options);
+    }
+
 
     /**
      * 初始化字体工具类

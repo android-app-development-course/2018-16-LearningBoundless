@@ -3,7 +3,7 @@ package com.scnu.learningboundless.network;
 
 import com.scnu.learningboundless.bean.network.LoginResponseInfo;
 import com.scnu.learningboundless.bean.network.RegisterResponseInfo;
-import com.scnu.learningboundless.constant.Constants;
+import com.scnu.learningboundless.constant.Constant;
 
 import io.reactivex.Observable;
 
@@ -38,7 +38,7 @@ public class SendMessageManager {
     public void getLoginStatus(String email, String password) {
 
         Observable<LoginResponseInfo> observable = apiService.getLoginStatus(email, password);
-        httpChannel.sendMessage(observable, Constants.GET_LOGIN_STATUS_URL);
+        httpChannel.sendMessage(observable, Constant.GET_LOGIN_STATUS_URL);
     }
 
 
@@ -52,7 +52,7 @@ public class SendMessageManager {
     public void getRegisterStatus(String username, String email, String password) {
 
         Observable<RegisterResponseInfo> observable = apiService.getRegisterStatus(username, email, password);
-        httpChannel.sendMessage(observable, Constants.GET_REGISTER_STATUS_URL);
+        httpChannel.sendMessage(observable, Constant.GET_REGISTER_STATUS_URL);
     }
 
 

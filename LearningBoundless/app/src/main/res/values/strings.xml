@@ -27,5 +27,18 @@
     <string name="message">消息</string>
     <string name="friends">我的好友</string>
     <string name="statistics">统计数据</string>
+    <string name="new_friend">新的朋友</string>
+    <string name="back">返回</string>
+    <string name="add_new_friend">添加好友</string>
+    <string name="input_user_name">请输入用户名进行查找</string>
+    <string name="add">添加</string>
+    <string name="not_empty_user_name">输入的用户名不能为空！</string>
+    <string name="send_invitation_success">成功发送邀请！</string>
+    <string name="send_invitation_failure">发送邀请失败！</string>
+    <string name="delete_this_friend">删除该好友</string>
+    <string name="my_friend">我的好友</string>
+    <string name="delete">删除</string>
+    <string name="success">成功</string>
+    <string name="failure">失败</string>
 
 </resources>

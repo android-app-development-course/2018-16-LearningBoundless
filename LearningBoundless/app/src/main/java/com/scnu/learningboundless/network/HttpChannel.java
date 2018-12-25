@@ -3,7 +3,7 @@ package com.scnu.learningboundless.network;
 import android.util.Log;
 
 import com.scnu.learningboundless.bean.network.BaseResponseInfo;
-import com.scnu.learningboundless.constant.Constants;
+import com.scnu.learningboundless.constant.Constant;
 import com.scnu.learningboundless.utils.RetrofitUtils;
 
 import io.reactivex.Observable;
@@ -31,7 +31,7 @@ public class HttpChannel {
 
     private HttpChannel() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_REQUEST_URL)
+                .baseUrl(Constant.BASE_REQUEST_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(RetrofitUtils.getOkHttpClientWithLoggingInterceptor())

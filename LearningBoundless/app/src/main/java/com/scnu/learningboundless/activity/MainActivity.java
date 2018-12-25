@@ -1,5 +1,6 @@
 package com.scnu.learningboundless.activity;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
@@ -26,7 +27,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.bottom_navigation_bar)
     protected BottomNavigationBar mBottomNavigationBar;
 
-    private List<BaseFragment> mFragmentList;
+    private List<Fragment> mFragmentList;
 
     private int mCurFragmentIndex;
 
@@ -50,6 +51,7 @@ public class MainActivity extends BaseActivity {
         initViewPager();
     }
 
+
     /**
      * 初始化底部导航栏
      */
@@ -58,7 +60,7 @@ public class MainActivity extends BaseActivity {
 
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
-        mBottomNavigationBar.setActiveColor(R.color.colorAccent);
+        mBottomNavigationBar.setActiveColor(R.color.bnb_active_color);
 
         mBottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.task, getResources().getString(R.string.task)))
                 .addItem(new BottomNavigationItem(R.drawable.message, getResources().getString(R.string.message)))
