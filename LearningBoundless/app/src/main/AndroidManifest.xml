@@ -56,31 +56,21 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.MainActivity" >
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activity.LoginActivity">
-        </activity>
-
+        <activity android:name=".activity.LoginActivity"></activity>
         <activity
             android:name=".activity.RegisterActivity"
-            android:theme="@style/Translucent">
-        </activity>
-
-        <activity android:name=".activity.SplashActivity">
-        </activity>
-
-        <activity android:name=".activity.ChatActivity">
-        </activity>
-
-        <activity android:name=".activity.AddNewFriendActivity">
-        </activity>
-
+            android:theme="@style/Translucent"></activity>
+        <activity android:name=".activity.SplashActivity"></activity>
+        <activity android:name=".activity.ChatActivity"></activity>
+        <activity android:name=".activity.AddNewFriendActivity"></activity>
+        <activity android:name=".activity.TimerActivity"></activity>
     </application>
 
 </manifest>

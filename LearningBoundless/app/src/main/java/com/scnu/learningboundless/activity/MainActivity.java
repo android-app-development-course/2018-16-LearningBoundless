@@ -1,10 +1,12 @@
 package com.scnu.learningboundless.activity;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.gao.jiefly.nubiatimer.Timer;
 import com.scnu.learningboundless.R;
 import com.scnu.learningboundless.adapter.MyFragmentPagerAdapter;
 import com.scnu.learningboundless.base.BaseActivity;
