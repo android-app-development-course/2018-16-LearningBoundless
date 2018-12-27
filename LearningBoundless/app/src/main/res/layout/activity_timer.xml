@@ -15,10 +15,10 @@
         android:id="@+id/btn_stop_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/plus_x"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:backgroundTint="@color/btn_white_normal"
+        android:backgroundTint="@color/btn_gray_pressed"
         />
 
 </RelativeLayout>
