@@ -10,6 +10,6 @@ public class Constant {
     public static final String GET_LOGIN_STATUS_URL = "login";
     public static final String GET_REGISTER_STATUS_URL = "register";
 
-    public static final String CONTACT_CHANGED = "contact_changed";
-    public static final String CONTACT_INVITE_CHANGED = "contact_invite_changed";
+    public static final String FRIEND_CHANGED = "contact_changed";
+    public static final String FRIEND_INVITE_CHANGED = "contact_invite_changed";
 }

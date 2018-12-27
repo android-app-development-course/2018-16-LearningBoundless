@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
@@ -16,8 +17,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.exceptions.HyphenateException;
 import com.scnu.learningboundless.R;
 import com.scnu.learningboundless.base.BaseActivity;
+import com.scnu.learningboundless.utils.Model;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -96,6 +100,32 @@ public class RegisterActivity extends BaseActivity {
             Toast.makeText(this, getResources().getString(R.string.confirm_error), Toast.LENGTH_SHORT).show();
             return;
         }
+
+        // 去环信服务器注册
+        Model.getInstance().getGlobalThreadPool().execute(() ->
+        {
+            try {
+                // 这里使用用户名userName充当用户的环信ID
+                EMClient.getInstance().createAccount(userName, password);
+
+                runOnUiThread(() ->
+                {
+                    Toast.makeText(RegisterActivity.this,
+                            getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
+
+                });
+            } catch (HyphenateException e) {
+                e.printStackTrace();
+
+                runOnUiThread(() ->
+                {
+                    Toast.makeText(RegisterActivity.this,
+                            getResources().getString(R.string.register_failure) + " " + e.toString(), Toast.LENGTH_SHORT).show();
+
+                });
+            }
+
+        });
     }
 
 
@@ -174,8 +204,8 @@ public class RegisterActivity extends BaseActivity {
     }
 
 
-    public static void actionStart(Context context) {
-        context.startActivity(new Intent(context, RegisterActivity.class));
+    public static void actionStart(Context context, Bundle bundle) {
+        context.startActivity(new Intent(context, RegisterActivity.class), bundle);
     }
 
 

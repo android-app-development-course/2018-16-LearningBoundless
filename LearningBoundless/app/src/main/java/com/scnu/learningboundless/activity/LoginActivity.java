@@ -14,8 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 import com.scnu.learningboundless.R;
 import com.scnu.learningboundless.base.BaseActivity;
+import com.scnu.learningboundless.bean.AccountInfo;
+import com.scnu.learningboundless.utils.Model;
 import com.scnu.learningboundless.utils.TypefaceUtils;
 
 import butterknife.BindView;
@@ -83,7 +87,8 @@ public class LoginActivity extends BaseActivity {
                 getWindow().setExitTransition(null);
                 getWindow().setEnterTransition(null);
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, mFabPlus, mFabPlus.getTransitionName());
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class), options.toBundle());
+
+                RegisterActivity.actionStart(this, options.toBundle());
 
                 break;
 
@@ -113,9 +118,42 @@ public class LoginActivity extends BaseActivity {
             return;
         }
 
-        Intent intent= new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent, oc2.toBundle());
 
+        // 去环信服务器登录
+        Model.getInstance().getGlobalThreadPool().execute(() ->
+        {
+            // 这里使用用户名userName充当用户的环信ID
+            EMClient.getInstance().login(userName, password, new EMCallBack() {
+                @Override
+                public void onSuccess() {
+                    // 登录成功后的处理
+                    Model.getInstance().loginSuccess(new AccountInfo(userName));
+
+                    // 保存当前账户个人信息到本地数据库
+                    Model.getInstance().getAccountInfoDao().addAccountInfo(new AccountInfo(userName));
+
+                    runOnUiThread(() ->
+                    {
+                        Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_success), Toast.LENGTH_SHORT).show();
+
+                        MainActivity.actionStart(LoginActivity.this, oc2.toBundle());
+
+                        finish();
+                    });
+
+                }
+
+                @Override
+                public void onError(int i, String s) {
+                    runOnUiThread(() -> Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_failure) + s, Toast.LENGTH_SHORT).show());
+                }
+
+                @Override
+                public void onProgress(int i, String s) {
+
+                }
+            });
+        });
     }
 
 

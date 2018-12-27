@@ -40,5 +40,17 @@
     <string name="delete">删除</string>
     <string name="success">成功</string>
     <string name="failure">失败</string>
+    <string name="accept">接受</string>
+    <string name="reject">拒绝</string>
+
+    <string name="add_a_friend">添加你为好友</string>
+    <string name="accept_invitation">接受邀请</string>
+    <string name="invitation_accepted">你的邀请被接受</string>
+    <string name="accept_a_invitation">接受了好友邀请</string>
+    <string name="accept_a_invitation_failure">接受好友邀请失败</string>
+    <string name="reject_a_invitation">拒绝了好友邀请</string>
+    <string name="reject_a_invitation_failure">拒绝好友邀请失败</string>
+    <string name="invitation_list">邀请信息列表</string>
+
 
 </resources>

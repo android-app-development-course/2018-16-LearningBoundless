@@ -20,6 +20,7 @@ import com.hyphenate.exceptions.HyphenateException;
 import com.scnu.learningboundless.R;
 import com.scnu.learningboundless.activity.AddNewFriendActivity;
 import com.scnu.learningboundless.activity.ChatActivity;
+import com.scnu.learningboundless.activity.InvitationListActivity;
 import com.scnu.learningboundless.bean.FriendInfo;
 import com.scnu.learningboundless.constant.Constant;
 import com.scnu.learningboundless.utils.Model;
@@ -74,6 +75,13 @@ public class FriendsFragment extends EaseContactListFragment {
 
         mIvFriendRedDot = (ImageView) friendListFragmentHeader.findViewById(R.id.iv_friend_red_dot);
         mLlNewFriend = (LinearLayout) friendListFragmentHeader.findViewById(R.id.ll_new_friend);
+    }
+
+
+    @Override
+    protected void setUpView()
+    {
+        super.setUpView();
 
         setContactListItemClickListener(new EaseContactListItemClickListener()
         {
@@ -88,12 +96,6 @@ public class FriendsFragment extends EaseContactListFragment {
                 ChatActivity.actionStart(getActivity(), user.getUsername());
             }
         });
-    }
-
-    @Override
-    protected void setUpView()
-    {
-        super.setUpView();
 
         titleBar.setRightLayoutClickListener(v ->
 
@@ -105,8 +107,8 @@ public class FriendsFragment extends EaseContactListFragment {
         mIvFriendRedDot.setVisibility(isNewInvite ? View.VISIBLE : View.INVISIBLE);
 
         mLBM = LocalBroadcastManager.getInstance(getActivity());
-        mLBM.registerReceiver(mFriendInviteChangeReceiver, new IntentFilter(Constant.CONTACT_INVITE_CHANGED));
-        mLBM.registerReceiver(mFriendChangeReceiver, new IntentFilter(Constant.CONTACT_CHANGED));
+        mLBM.registerReceiver(mFriendInviteChangeReceiver, new IntentFilter(Constant.FRIEND_INVITE_CHANGED));
+        mLBM.registerReceiver(mFriendChangeReceiver, new IntentFilter(Constant.FRIEND_CHANGED));
 
 
         mLlNewFriend.setOnClickListener(v ->
@@ -114,7 +116,7 @@ public class FriendsFragment extends EaseContactListFragment {
             mIvFriendRedDot.setVisibility(View.INVISIBLE);
             SPUtils.getInstance().save(SPUtils.IS_NEW_INVITE, false);
 
-            //InvitationListActivity.actionStart(getActivity());
+            InvitationListActivity.actionStart(getActivity());
         });
 
 
@@ -145,15 +147,15 @@ public class FriendsFragment extends EaseContactListFragment {
     {
         if (item.getItemId() == R.id.friend_delete)
         {
-            deleteContact();
+            deleteFriend();
             return true;
         }
 
         return super.onContextItemSelected(item);
     }
 
-    // 删除选中的联系人
-    private void deleteContact()
+    // 删除选中的好友
+    private void deleteFriend()
     {
         Model.getInstance().getGlobalThreadPool().execute(new Runnable()
         {
@@ -206,7 +208,7 @@ public class FriendsFragment extends EaseContactListFragment {
     }
 
     /**
-     * 去环信服务器获取所有联系人信息
+     * 去环信服务器获取所有好友信息
      */
     private void getFriendListFromEM()
     {
@@ -255,15 +257,15 @@ public class FriendsFragment extends EaseContactListFragment {
 
         if (contactList != null && contactList.size() >= 0)
         {
-            Map<String, EaseUser> contactListMap = new HashMap<>();
+            Map<String, EaseUser> friendListMap = new HashMap<>();
 
             for (FriendInfo friendInfo : friendInfoList)
             {
                 EaseUser easeUser = new EaseUser(friendInfo.getUserName());
-                contactListMap.put(friendInfo.getUserName(), easeUser);
+                friendListMap.put(friendInfo.getUserName(), easeUser);
             }
 
-            setContactsMap(contactListMap);
+            setContactsMap(friendListMap);
 
             refresh();
         }

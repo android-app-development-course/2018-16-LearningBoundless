@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.EaseUI;
+import com.scnu.learningboundless.utils.Model;
 import com.scnu.learningboundless.utils.TypefaceUtils;
 
 /**
@@ -23,7 +24,7 @@ public class MyApplication extends Application {
         sContext = this;
 
         initEaseUI();
-
+        initModel();
         initTypefaceUtil();
     }
 
@@ -39,6 +40,13 @@ public class MyApplication extends Application {
         EaseUI.getInstance().init(this, options);
     }
 
+
+    /**
+     * 初始化数据模型层类
+     */
+    public void initModel() {
+        Model.getInstance().init(this);
+    }
 
     /**
      * 初始化字体工具类

@@ -4,8 +4,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
 
+import com.hyphenate.chat.EMClient;
 import com.scnu.learningboundless.R;
 import com.scnu.learningboundless.base.BaseActivity;
+import com.scnu.learningboundless.bean.AccountInfo;
+import com.scnu.learningboundless.utils.Model;
 import com.scnu.learningboundless.utils.TypefaceUtils;
 
 import butterknife.BindView;
@@ -74,6 +77,29 @@ public class SplashActivity extends BaseActivity {
      */
     private void toLoginOrMain() {
 
-        LoginActivity.actionStart(this);
+        Model.getInstance().getGlobalThreadPool().execute(() ->
+        {
+            // 用户之前登录过
+            if (EMClient.getInstance().isLoggedInBefore()) {
+                // 获取当前账号用户的信息
+                AccountInfo accountInfo = Model.getInstance().getAccountInfoDao().getAccountInfoByUserName(EMClient.getInstance().getCurrentUser());
+
+                // userInfo为null时，重新登录
+                if (accountInfo == null) {
+                    LoginActivity.actionStart(SplashActivity.this);
+                } else {
+                    // 登录成功后的处理
+                    Model.getInstance().loginSuccess(accountInfo);
+
+                    MainActivity.actionStart(SplashActivity.this);
+                }
+            }
+            // 用户之前没有登录过
+            else {
+                LoginActivity.actionStart(SplashActivity.this);
+            }
+
+            finish();
+        });
     }
 }

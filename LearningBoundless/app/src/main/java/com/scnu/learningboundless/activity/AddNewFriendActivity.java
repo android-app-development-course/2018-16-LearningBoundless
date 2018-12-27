@@ -2,10 +2,6 @@ package com.scnu.learningboundless.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,13 +12,13 @@ import android.widget.Toast;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 import com.scnu.learningboundless.R;
+import com.scnu.learningboundless.base.BaseActivity;
 import com.scnu.learningboundless.utils.Model;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AddNewFriendActivity extends AppCompatActivity {
+public class AddNewFriendActivity extends BaseActivity {
 
     @BindView(R.id.sv_new_friend_name)
     android.support.v7.widget.SearchView mSvNewFriendName;
@@ -35,18 +31,24 @@ public class AddNewFriendActivity extends AppCompatActivity {
 
     private String curInputText;
 
+
+    /**
+     * 得到当前Activity对应的布局文件的id
+     *
+     * @return
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_friend);
+    protected int getContentLayoutId() {
+        return R.layout.activity_add_new_friend;
+    }
 
-        ButterKnife.bind(this);
 
-        initTransparentStatusBar();
+    @Override
+    protected void initWidget() {
+        super.initWidget();
 
         initSearchView();
     }
-
 
     @Override
     protected void onDestroy() {
@@ -54,26 +56,6 @@ public class AddNewFriendActivity extends AppCompatActivity {
         hideSoftKeyboard();
     }
 
-
-    /**
-     * 初始化透明状态栏
-     */
-    private void initTransparentStatusBar() {
-        // 实现透明状态栏效果
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-
-            decorView.setSystemUiVisibility(option);
-
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-    }
 
 
     @OnClick({R.id.iv_back, R.id.tv_back, R.id.iv_search_new_friend, R.id.btn_add_new_friend})
@@ -131,7 +113,6 @@ public class AddNewFriendActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // 去自己的服务器查询判断是否存在newFriendName用户，这里省略......
-
 
                 runOnUiThread(new Runnable() {
                     @Override

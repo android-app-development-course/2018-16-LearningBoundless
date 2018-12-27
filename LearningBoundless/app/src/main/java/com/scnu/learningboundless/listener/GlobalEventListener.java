@@ -46,7 +46,7 @@ public class GlobalEventListener
             Model.getInstance().getFriendAndInvitationManager().getFriendInfoDao().saveFriend(new FriendInfo(userName));
 
             // 发送联系人变化的广播
-            mLBM.sendBroadcast(new Intent(Constant.CONTACT_CHANGED));
+            mLBM.sendBroadcast(new Intent(Constant.FRIEND_CHANGED));
         }
 
         // 联系人删除后执行
@@ -58,7 +58,7 @@ public class GlobalEventListener
             Model.getInstance().getFriendAndInvitationManager().getInvitationInfoDao().deleteInvitationByUserName(userName);
 
             // 发送联系人变化的广播
-            mLBM.sendBroadcast(new Intent(Constant.CONTACT_CHANGED));
+            mLBM.sendBroadcast(new Intent(Constant.FRIEND_CHANGED));
         }
 
         // 接收到联系人的好友邀请后执行
@@ -78,7 +78,7 @@ public class GlobalEventListener
             SPUtils.getInstance().save(SPUtils.IS_NEW_INVITE, true);
 
             // 发送邀请信息变化的广播
-            mLBM.sendBroadcast(new Intent(Constant.CONTACT_INVITE_CHANGED));
+            mLBM.sendBroadcast(new Intent(Constant.FRIEND_INVITE_CHANGED));
         }
 
 
@@ -98,7 +98,7 @@ public class GlobalEventListener
             SPUtils.getInstance().save(SPUtils.IS_NEW_INVITE, true);
 
             // 发送邀请信息变化的广播
-            mLBM.sendBroadcast(new Intent(Constant.CONTACT_INVITE_CHANGED));
+            mLBM.sendBroadcast(new Intent(Constant.FRIEND_INVITE_CHANGED));
         }
 
         // 别人拒绝了你的好友邀请后执行
@@ -109,7 +109,7 @@ public class GlobalEventListener
             SPUtils.getInstance().save(SPUtils.IS_NEW_INVITE, true);
 
             // 发送邀请信息变化的广播
-            mLBM.sendBroadcast(new Intent(Constant.CONTACT_INVITE_CHANGED));
+            mLBM.sendBroadcast(new Intent(Constant.FRIEND_INVITE_CHANGED));
         }
     };
 
