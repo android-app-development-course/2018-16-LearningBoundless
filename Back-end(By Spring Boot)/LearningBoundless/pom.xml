@@ -11,7 +11,7 @@
 	<groupId>com.scnu</groupId>
 	<artifactId>learning_boundless</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<!--<packaging>war</packaging>-->
 	<name>learning_boundless</name>
 	<description>The back-end service of LearningBoundless APP used Spring Boot.</description>
 
@@ -43,11 +43,11 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+			<!--<scope>provided</scope>-->
+		<!--</dependency>-->
 
 	</dependencies>
 
@@ -60,7 +60,7 @@
 		</plugins>
 
 		<!--自定义war的包名-->
-		<finalName>LB</finalName>
+		<!--<finalName>LB</finalName>-->
 	</build>
 
 </project>

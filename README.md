@@ -78,9 +78,257 @@
 
 ***
 
+## 5. RESTful API
 
-## 5. Tasks
-### 5.1 Task1
+### 5.1 获取用户个人信息 
+
+* 请求方式：get
+
+* url：http://119.23.227.96:8080/LB/user/{username}
+
+* 请求参数：username
+
+* 响应格式示例：
+
+  ```json
+  {
+      "username": "wuchangi",
+      "password": "132152315",
+      "avatar": "wqeqwgrewhtrehrtejrej",
+      "level": 2
+  }
+  ```
+  <br/>
+
+
+### 5.2 获取某一用户的任务集
+
+* 请求方式：get
+
+* url：http://119.23.227.96:8080/LB/task/{username}
+
+* 请求参数：username
+
+* 响应格式示例：
+
+  ```json
+  [{
+  	"id": 1,
+  	"startTime": "2018/12/26 18:00",
+  	"endTime": "2018/12/26 21:00",
+  	"priority": 1,
+  	"content": "刷完算法导论第四章第二节",
+  	"username": "chenminghai"
+  }, {
+  	"id": 2,
+  	"startTime": "2018/12/26 21:10",
+  	"endTime": "2018/12/26 22:10",
+  	"priority": 2,
+  	"content": "写移动开发实验报告",
+  	"username": "chenminghai"
+  }, {
+  	"id": 3,
+  	"startTime": "2018/12/26 22:18",
+  	"endTime": "2018/12/26 23:20",
+  	"priority": 3,
+  	"content": "复习程序设计艺术PPT",
+  	"username": "chenminghai"
+  }]
+  ```
+
+
+
+<br/>
+
+
+### 5.3 获取数据库中所有任务
+
+* 请求方式：get
+
+* url：http://119.23.227.96:8080/LB/task/all
+
+* 响应格式示例：
+
+  ```json
+  [{
+  	"id": 1,
+  	"startTime": "2018/12/26 18:00",
+  	"endTime": "2018/12/26 21:00",
+  	"priority": 1,
+  	"content": "刷完算法导论第四章第二节",
+  	"username": "chenminghai"
+  }, {
+  	"id": 2,
+  	"startTime": "2018/12/26 21:10",
+  	"endTime": "2018/12/26 22:10",
+  	"priority": 2,
+  	"content": "写移动开发实验报告",
+  	"username": "chenminghai"
+  }, {
+  	"id": 3,
+  	"startTime": "2018/12/26 22:18",
+  	"endTime": "2018/12/26 23:20",
+  	"priority": 3,
+  	"content": "复习程序设计艺术PPT",
+  	"username": "chenminghai"
+  }, {
+  	"id": 4,
+  	"startTime": "2018/12/27 17:30",
+  	"endTime": "2018/12/27 18:00",
+  	"priority": 1,
+  	"content": "去西田跑步",
+  	"username": "wuchangi"
+  }, {
+  	"id": 5,
+  	"startTime": "2018/12/27 19:30",
+  	"endTime": "2018/12/27 20:30",
+  	"priority": 2,
+  	"content": "整理复习资料",
+  	"username": "wuchangi"
+  }, {
+  	"id": 6,
+  	"startTime": "2018/12/26 17:30",
+  	"endTime": "2018/12/26 21:30",
+  	"priority": 1,
+  	"content": "移动开发实验作业",
+  	"username": "ticktock"
+  }, {
+  	"id": 7,
+  	"startTime": "2018/12/26 20:00",
+  	"endTime": "2018/12/26 22:00",
+  	"priority": 2,
+  	"content": "科技文献PPT准备",
+  	"username": "SeanLiaoy"
+  }]
+  ```
+
+
+
+<br/>
+
+### 5.4 添加用户个人信息 
+
+* 请求方式：post
+
+* url：http://119.23.227.96:8080/LB/user/add
+
+* 请求体格式示例：
+
+  ```json
+  {
+       "username": "newone",
+       "password": "223634",
+       "avatar": "ghuweghueiwrhgurhghghhghghhg",
+       "level": 1
+  }
+  ```
+
+* 响应格式示例：
+
+  ```json
+  {
+      "code": 0,
+      "msg": "成功！",
+      "data": {
+          "username": "newone",
+          "password": "223634",
+          "avatar": "ghuweghueiwrhgurhghghhghghhg",
+          "level": 1
+      }
+  }
+  ```
+
+<br/>
+
+### 5.5 更新用户信息
+
+* url：http://119.23.227.96:8080/LB/user/update
+
+
+* 请求方式、请求体格式、响应格式同**5.4**
+
+<br/>
+
+
+
+### 5.6 添加任务集
+
+* 请求方式：post
+
+
+* url：http://119.23.227.96:8080/LB/task/add
+
+* 请求体格式示例：
+
+  ```json
+  [{
+  	"id": 1,
+  	"startTime": "2018/12/26 18:00",
+  	"endTime": "2018/12/26 21:00",
+  	"priority": 1,
+  	"content": "刷完算法导论第四章第二节",
+  	"username": "chenminghai"
+  }, {
+  	"id": 2,
+  	"startTime": "2018/12/26 21:10",
+  	"endTime": "2018/12/26 22:10",
+  	"priority": 2,
+  	"content": "写移动开发实验报告",
+  	"username": "chenminghai"
+  }, {
+  	"id": 3,
+  	"startTime": "2018/12/26 22:18",
+  	"endTime": "2018/12/26 23:20",
+  	"priority": 3,
+  	"content": "复习程序设计艺术PPT",
+  	"username": "chenminghai"
+  }]
+  ```
+
+* 响应格式示例：
+
+  ```json
+  {
+      "code": 0,
+      "msg": "成功！",
+      "data": [
+          {
+              "id": 1,
+              "startTime": "2018/12/26 18:00",
+              "endTime": "2018/12/26 21:00",
+              "priority": 1,
+              "content": "刷完算法导论第四章第二节",
+              "username": "chenminghai"
+          },
+          {
+              "id": 2,
+              "startTime": "2018/12/26 21:10",
+              "endTime": "2018/12/26 22:10",
+              "priority": 2,
+              "content": "写移动开发实验报告",
+              "username": "chenminghai"
+          },
+          {
+              "id": 3,
+              "startTime": "2018/12/26 22:18",
+              "endTime": "2018/12/26 23:20",
+              "priority": 3,
+              "content": "复习程序设计艺术PPT",
+              "username": "chenminghai"
+          }
+      ]
+  }
+  ```
+
+  ​
+
+<br/>
+
+***
+
+
+## 6. Tasks
+### 6.1 Task1
 
 ![task1](/Screenshots/Tasks/task1.png)
 
@@ -93,7 +341,7 @@
 
 <br/>
 
-### 5.2 Task2
+### 6.2 Task2
 
 
 
@@ -107,7 +355,7 @@
 
 
 
-### 5.3 Task3
+### 6.3 Task3
 
 ![task3](/Screenshots/Tasks/task3.png)
 
