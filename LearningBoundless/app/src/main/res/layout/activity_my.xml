@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <View
+        android:id="@+id/none_view"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/blue_gradient_bg" />
+    <!--头像背景图-->
+    <ImageView
+        android:id="@+id/iv_head_bg"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="-100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/head_bg"
+        android:adjustViewBounds="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/iv_back"
+            android:text="@string/back"
+            android:textColor="@android:color/white"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="bottom">
+
+            <!--大头像-->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_big_head"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/head"/>
+
+            <!--用户昵称-->
+            <TextView
+                android:id="@+id/tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_big_head"
+                android:layout_centerHorizontal="true"
+                android:text="Happy Dog"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"/>
+
+
+            <!--上传数、等级-->
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@id/tv_nickname"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp">
+
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/tv_line"
+                    android:orientation="horizontal">
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="积分  "
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"/>
+
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:textColor="@android:color/holo_orange_dark"
+                        android:textSize="15sp"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="|"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"/>
+
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/tv_line"
+                    android:orientation="horizontal">
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="等级  "
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"/>
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="v1"
+                        android:textSize="15sp"
+                        android:textColor="@android:color/holo_blue_bright"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+
+            <ListView
+                android:id="@+id/lv_personal_information"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </ListView>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

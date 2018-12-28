@@ -71,8 +71,15 @@ public class StatisticsFragment extends Fragment {
     BarChart mBarChart;
 
     private final int initLineChartX = 1;  // 折线图点开始横坐标
-    private final int FINISH_COLOR = ColorTemplate.JOYFUL_COLORS[3];
-    private final int UNFINISH_COLOR = ColorTemplate.JOYFUL_COLORS[2];
+
+    private final int FINISH_COLOR1 = ColorTemplate.JOYFUL_COLORS[3];
+    private final int UNFINISH_COLOR1 = ColorTemplate.VORDIPLOM_COLORS[2];
+
+    private final int FINISH_COLOR2 = ColorTemplate.JOYFUL_COLORS[1];
+    private final int UNFINISH_COLOR2 = ColorTemplate.JOYFUL_COLORS[3];
+
+    private final int FINISH_COLOR3 = ColorTemplate.JOYFUL_COLORS[2];
+    private final int UNFINISH_COLOR3 = ColorTemplate.JOYFUL_COLORS[3];
 
     /**
      * 得到当前Fragment对应的布局文件的id
@@ -86,7 +93,6 @@ public class StatisticsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        return super.onCreateView(inflater, container, savedInstanceState);
         if(mRootView == null){
             int layoutId = getContentLayoutId();
             View rootView = inflater.inflate(layoutId, container, false);
@@ -120,8 +126,39 @@ public class StatisticsFragment extends Fragment {
         initBarChartWidget();
     }
 
+    /**
+     * 这里设置三种统计图的数据
+     */
     protected void initData() {
         setTestData();
+    }
+
+    /**
+     * 准备测试数据，测试统计图的显示效果
+     */
+    private void setTestData(){
+        Log.d("Sean", "initData: 准备调用setPieChartData");
+        setPieChartData(10,50);
+
+        // for test
+        ArrayList<Integer> list1 = new ArrayList<>();
+        ArrayList<Integer> list2 = new ArrayList<>();
+        ArrayList<String> dates = new ArrayList<>();
+
+        for(int i = 5; i < 35; i+=5){
+            list1.add(new Integer(i));
+            list2.add(new Integer(i-3));
+        }
+
+        dates.add("2017年1月1日");
+        dates.add("2017年1月4日");
+        dates.add("2017年1月9日");
+        dates.add("2017年2月1日");
+        dates.add("2017年2月5日");
+        dates.add("2017年3月1日");
+
+        setLineChartData(list1,list2);
+        setBarChartData(list1,list2,dates);
     }
 
 
@@ -277,17 +314,19 @@ public class StatisticsFragment extends Fragment {
 
         //数据和颜色
         ArrayList<Integer> colors = new ArrayList<Integer>();
-        for (int c : ColorTemplate.VORDIPLOM_COLORS)
-            colors.add(c);
-        for (int c : ColorTemplate.JOYFUL_COLORS)
-            colors.add(c);
-        for (int c : ColorTemplate.COLORFUL_COLORS)
-            colors.add(c);
-        for (int c : ColorTemplate.LIBERTY_COLORS)
-            colors.add(c);
-        for (int c : ColorTemplate.PASTEL_COLORS)
-            colors.add(c);
+//        for (int c : ColorTemplate.LIBERTY_COLORS)
+//            colors.add(c);
+//        for (int c : ColorTemplate.VORDIPLOM_COLORS)
+//            colors.add(c);
+//        for (int c : ColorTemplate.JOYFUL_COLORS)
+//            colors.add(c);
+//        for (int c : ColorTemplate.COLORFUL_COLORS)
+//            colors.add(c);
+//        for (int c : ColorTemplate.PASTEL_COLORS)
+//            colors.add(c);
 
+        colors.add(FINISH_COLOR1);
+        colors.add(UNFINISH_COLOR1);
         colors.add(ColorTemplate.getHoloBlue());
         pieDataSet.setColors(colors);
 
@@ -342,14 +381,14 @@ public class StatisticsFragment extends Fragment {
         } else {
             //设置数据1  参数1：数据源 参数2：图例名称
             set1 = new LineDataSet(finishedList, "已完成数量");
-            set1.setColor(FINISH_COLOR);
-            set1.setCircleColor(UNFINISH_COLOR);
-            set1.setLineWidth(1f);//设置线宽
+            set1.setColor(FINISH_COLOR2);
+            set1.setCircleColor(FINISH_COLOR2);
+            set1.setLineWidth(2f);//设置线宽
             set1.setCircleRadius(3f);//设置焦点圆心的大小
             set1.enableDashedHighlightLine(10f, 5f, 0f);//点击后的高亮线的显示样式
             set1.setHighlightLineWidth(2f);//设置点击交点后显示高亮线宽
             set1.setHighlightEnabled(true);//是否禁用点击高亮线
-            set1.setHighLightColor(Color.RED);//设置点击交点后显示交高亮线的颜色
+            set1.setHighLightColor(Color.GRAY);//设置点击交点后显示交高亮线的颜色
             set1.setValueTextSize(9f);//设置显示值的文字大小
             set1.setDrawFilled(false);//设置禁用范围背景填充
 
@@ -375,9 +414,9 @@ public class StatisticsFragment extends Fragment {
 
             //设置数据2
             set2 = new LineDataSet(unfinishedList, "未完成数量");
-            set2.setColor(Color.YELLOW);
-            set2.setCircleColor(Color.YELLOW);
-            set2.setLineWidth(1f);
+            set2.setColor(UNFINISH_COLOR2);
+            set2.setCircleColor(UNFINISH_COLOR2);
+            set2.setLineWidth(2f);
             set2.setCircleRadius(3f);
             set2.setValueTextSize(10f);
             set2.setValueFormatter(valueFormatter);
@@ -429,8 +468,8 @@ public class StatisticsFragment extends Fragment {
             dataSets.add(barDataSet1);
             dataSets.add(barDataSet2);
 
-            barDataSet1.setColor(FINISH_COLOR);
-            barDataSet2.setColor(UNFINISH_COLOR);
+            barDataSet1.setColor(FINISH_COLOR3);
+            barDataSet2.setColor(UNFINISH_COLOR3);
 
             barDataSet1.setDrawValues(true);
             barDataSet2.setDrawValues(true);
@@ -459,34 +498,5 @@ public class StatisticsFragment extends Fragment {
             mBarChart.getXAxis().setLabelRotationAngle(-60);
         }
         mBarChart.animateY(2500);
-    }
-
-
-    /**
-     * 准备测试数据，测试统计图的显示效果
-     */
-    private void setTestData(){
-        Log.d("Sean", "initData: 准备调用setPieChartData");
-        setPieChartData(10,50);
-
-        // for test
-        ArrayList<Integer> list1 = new ArrayList<>();
-        ArrayList<Integer> list2 = new ArrayList<>();
-        ArrayList<String> dates = new ArrayList<>();
-
-        for(int i = 5; i < 35; i+=5){
-            list1.add(new Integer(i));
-            list2.add(new Integer(i-3));
-        }
-
-        dates.add("2017年1月1日");
-        dates.add("2017年1月4日");
-        dates.add("2017年1月9日");
-        dates.add("2017年2月1日");
-        dates.add("2017年2月5日");
-        dates.add("2017年3月1日");
-
-        setLineChartData(list1,list2);
-        setBarChartData(list1,list2,dates);
     }
 }

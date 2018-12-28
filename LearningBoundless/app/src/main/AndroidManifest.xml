@@ -93,6 +93,9 @@
         <activity android:name=".activity.TaskDetailActivity">
         </activity>
 
+        <activity android:name=".activity.MyActivity">
+        </activity>
+
     </application>
 
 </manifest>
