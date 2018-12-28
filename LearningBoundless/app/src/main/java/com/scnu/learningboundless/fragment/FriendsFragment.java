@@ -67,8 +67,13 @@ public class FriendsFragment extends EaseContactListFragment {
     {
         super.initView();
 
-        titleBar.setTitle(getResources().getString(R.string.my_friend));
-        titleBar.setRightImageResource(R.drawable.add);
+//        titleBar.setTitle(getResources().getString(R.string.my_friend));
+//        titleBar.setRightImageResource(R.drawable.add);
+//
+        titleBar.setVisibility(View.GONE);
+////
+//        query.setVisibility(View.GONE);
+
 
         View friendListFragmentHeader = View.inflate(getActivity(), R.layout.fragment_contact_list_header, null);
         listView.addHeaderView(friendListFragmentHeader);
@@ -97,10 +102,10 @@ public class FriendsFragment extends EaseContactListFragment {
             }
         });
 
-        titleBar.setRightLayoutClickListener(v ->
-
-            AddNewFriendActivity.actionStart(FriendsFragment.this.getActivity())
-        );
+//        titleBar.setRightLayoutClickListener(v ->
+//
+//            AddNewFriendActivity.actionStart(FriendsFragment.this.getActivity())
+//        );
 
         boolean isNewInvite = SPUtils.getInstance().getBoolean(SPUtils.IS_NEW_INVITE, false);
 

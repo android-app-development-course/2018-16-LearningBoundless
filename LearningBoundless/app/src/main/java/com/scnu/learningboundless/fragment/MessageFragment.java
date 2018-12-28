@@ -1,5 +1,7 @@
 package com.scnu.learningboundless.fragment;
 
+import android.view.View;
+
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
@@ -27,7 +29,12 @@ public class MessageFragment extends EaseConversationListFragment {
     {
         super.initView();
 
-        titleBar.setTitle(getResources().getString(R.string.message));
+       // titleBar.setTitle(getResources().getString(R.string.message));
+
+        titleBar.setVisibility(View.GONE);
+//        query.setVisibility(View.GONE);
+
+
 
         setConversationListItemClickListener(conversation ->
         {

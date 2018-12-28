@@ -122,7 +122,7 @@ public class EaseContactListFragment extends EaseBaseFragment {
                     clearSearch.setVisibility(View.VISIBLE);
                 } else {
                     clearSearch.setVisibility(View.INVISIBLE);
-                    
+
                 }
             }
 
@@ -139,7 +139,7 @@ public class EaseContactListFragment extends EaseBaseFragment {
                 hideSoftKeyboard();
             }
         });
-        
+
         listView.setOnTouchListener(new OnTouchListener() {
 
             @Override

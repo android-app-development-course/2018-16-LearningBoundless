@@ -2,9 +2,18 @@ package com.scnu.learningboundless.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -42,7 +51,7 @@ public class MainActivity extends BaseActivity {
      */
     @Override
     protected int getContentLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.drawer_menu_layout;
     }
 
 
@@ -52,6 +61,8 @@ public class MainActivity extends BaseActivity {
 
         initBottomNavigationBar();
         initViewPager();
+
+        initDrawerLayout();
     }
 
 
@@ -122,6 +133,88 @@ public class MainActivity extends BaseActivity {
         });
 
         mViewPager.setCurrentItem(0);
+    }
+
+
+    /**
+     * 初始化侧滑菜单
+     */
+    protected void initDrawerLayout(){
+
+        //设置ToolBar
+        final Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar1);
+        mToolbar.setNavigationIcon(R.drawable.add); //无效
+        mToolbar.setTitleTextColor(Color.WHITE);    //无效
+        mToolbar.inflateMenu(R.menu.drawer);        //无效
+        setSupportActionBar(mToolbar);
+
+
+        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                String msg = "";
+                switch (item.getItemId()) {
+                    case R.id.item_a:
+                        msg += "Hello World!!!!!!!!!!!!";
+                        break;
+                    default:
+                        break;
+                }
+                if(!msg.equals("")){
+                    Toast.makeText(MainActivity.this,msg, Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
+
+        //设置抽屉DrawerLayout
+        final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
+//        mDrawerToggle.
+//        mDrawerToggle.setToolbarNavigationClickListener();
+
+        mDrawerToggle.syncState();//初始化状态
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        //设置导航栏NavigationView的点击事件
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        View headerLayout = mNavigationView.inflateHeaderView(R.layout.navigation_header);
+
+        View iv_headimage=headerLayout.findViewById(R.id.iv_headimage);
+        iv_headimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,MyActivity.class);
+                startActivity(intent);
+                mDrawerLayout.closeDrawers();//关闭抽屉
+            }
+        });
+
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                switch (menuItem.getItemId())
+                {
+                    case R.id.item_one:
+
+                        break;
+                    case R.id.item_two:
+
+                        break;
+                    case R.id.item_three:
+                        Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                        startActivity(intent);
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content,new FriendsFragment()).commit();
+//                        mToolbar.setTitle("附近的人");
+                        break;
+                    case R.id.iv_headimage:
+                        startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                        break;
+                }
+                menuItem.setChecked(true);//点击了把它设为选中状态
+                mDrawerLayout.closeDrawers();//关闭抽屉
+                return true;
+            }
+        });
     }
 
 

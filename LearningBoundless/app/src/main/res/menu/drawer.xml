@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_one"
+            android:icon="@drawable/message1"
+            android:title="动态"></item>
+        <item
+            android:id="@+id/item_two"
+            android:icon="@drawable/setting"
+            android:title="设置"></item>
+        <item
+            android:id="@+id/item_three"
+            android:icon="@drawable/quit"
+            android:title="退出"></item>
+    </group>
+</menu>

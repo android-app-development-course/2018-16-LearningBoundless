@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_a"
+            android:icon="@drawable/message1"
+            android:title="动态"
+            app:showAsAction="always"></item>
+        <item
+            android:id="@+id/item_b"
+            android:icon="@drawable/setting"
+            android:title="设置"
+            app:showAsAction="never"></item>
+        <item
+            android:id="@+id/item_c"
+            android:icon="@drawable/quit"
+            android:title="退出"
+            app:showAsAction="never"></item>
+    </group>
+</menu>

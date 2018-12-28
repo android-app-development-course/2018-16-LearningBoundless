@@ -20,6 +20,7 @@
         android:adjustViewBounds="true"/>
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="21dp"
         android:layout_height="50dp">
 
         <ImageView

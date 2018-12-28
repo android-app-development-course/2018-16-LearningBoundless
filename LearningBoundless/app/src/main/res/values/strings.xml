@@ -92,6 +92,7 @@
     <string name="item_hint">点击日期查看，点击选中卡片左滑可编辑/删除</string>
     <string name="existed_data">已有数据</string>
 
-
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
 
 </resources>
