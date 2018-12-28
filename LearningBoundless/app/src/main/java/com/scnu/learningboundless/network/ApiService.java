@@ -42,4 +42,5 @@ public interface ApiService {
     Observable<RegisterResponseInfo> getRegisterStatus(@Field("name") String username, @Field("email") String email,
                                                        @Field("password") String password);
 
+
 }

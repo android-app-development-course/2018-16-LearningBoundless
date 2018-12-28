@@ -6,4 +6,18 @@
 
     <color name="bnb_active_color">#00FFFF</color>
 
+
+    <color name="btn_blue_bg">#3299CC</color>
+    <color name="btn_red_bg">#FF2400</color>
+    <color name="btn_green_bg">#32CD32</color>
+    <color name="btn_orange_bg">#FF7F00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="fab_label_bg_color">#E05677fc</color>
+    <color name="fab_green_bg">#00FF7F</color>
+    <color name="fab_orange_bg">#FF7F00</color>
+    <color name="description_bg_color">#EEEEEE</color>
+    <color name="edit_btn_bg">#ecd50a</color>
+    <color name="delete_btn_bg">#FF2400</color>
+    <color name="black">#000</color>
+
 </resources>

@@ -1,13 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:orientation="vertical"
+        android:background="@drawable/blue_gradient_bg">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="21dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:paddingTop="6dp"
+            android:gravity="top|center"
+            android:text="待办事项"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_mood_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="70dp"/>
+    <!---->
     <TextView
+        android:id="@+id/tv_empty_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50dp"
-        android:text="待办任务"/>
+        android:layout_centerInParent="true"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        app:fab_labelStyle="@style/menu_labels_style"
+        app:fab_labelsPosition="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_create_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/fab_green_bg"
+            app:fab_icon="@drawable/card"
+            app:fab_title="@string/create_card" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_clear_all_cards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/fab_orange_bg"
+            app:fab_icon="@drawable/clear"
+            app:fab_title="@string/clear_all_cards" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </RelativeLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mcxtzhang.swipemenulib.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/test"
+        app:cardCornerRadius="20dp">
+
+        <ImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:background="@drawable/rectangle_white_stroke"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="2018-12-22"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/rectangle_purple_stroke"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="写好Android"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="4dp"
+            android:text="@string/item_hint"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:background="@color/btn_green_bg"
+        android:text="@string/start"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_edit"
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:background="@color/edit_btn_bg"
+        android:text="@string/edit"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:background="@color/delete_btn_bg"
+        android:text="@string/delete"
+        android:textColor="@android:color/white" />
+
+</com.mcxtzhang.swipemenulib.SwipeMenuLayout>

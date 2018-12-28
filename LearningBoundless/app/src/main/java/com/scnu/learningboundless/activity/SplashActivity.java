@@ -2,21 +2,17 @@ package com.scnu.learningboundless.activity;
 
 import android.os.Handler;
 import android.os.Message;
-import android.widget.TextView;
 
 import com.hyphenate.chat.EMClient;
 import com.scnu.learningboundless.R;
 import com.scnu.learningboundless.base.BaseActivity;
 import com.scnu.learningboundless.bean.AccountInfo;
 import com.scnu.learningboundless.utils.Model;
-import com.scnu.learningboundless.utils.TypefaceUtils;
-
-import butterknife.BindView;
 
 public class SplashActivity extends BaseActivity {
 
-    @BindView(R.id.tv_splash_title)
-    protected TextView mTvSplashTitle;
+//    @BindView(R.id.tv_splash_title)
+//    protected TextView mTvSplashTitle;
 
     protected Handler mHandler = new Handler() {
 
@@ -49,7 +45,7 @@ public class SplashActivity extends BaseActivity {
     protected void initWidget() {
         super.initWidget();
 
-        initTypefaceOfTitle();
+//        initTypefaceOfTitle();
 
         // 发送2s的延时消息
         mHandler.sendMessageDelayed(Message.obtain(), 2000);
@@ -63,13 +59,13 @@ public class SplashActivity extends BaseActivity {
         mHandler.removeCallbacksAndMessages(null);
     }
 
-
-    /**
-     * 初始化启动页的标题的字体
-     */
-    private void initTypefaceOfTitle() {
-        mTvSplashTitle.setTypeface(TypefaceUtils.getInstance().getTypeface1());
-    }
+//
+//    /**
+//     * 初始化启动页的标题的字体
+//     */
+//    private void initTypefaceOfTitle() {
+//        mTvSplashTitle.setTypeface(TypefaceUtils.getInstance().getTypeface1());
+//    }
 
 
     /**

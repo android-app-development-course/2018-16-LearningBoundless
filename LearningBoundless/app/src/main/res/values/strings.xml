@@ -53,4 +53,45 @@
     <string name="invitation_list">邀请信息列表</string>
 
 
+    <!--我的-->
+    <string name="select_start_date">点击选择开始时间</string>
+    <string name="select_end_date">点击选择结束时间</string>
+    <string name="content">任务内容</string>
+    <string name="priority">任务优先级</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="hour">:</string>
+    <string name="minute">分</string>
+
+    <string name="start_date">开始时间</string>
+    <string name="end_date">结束时间</string>
+    <string name="finish">任务已完成</string>
+    <string name="save">保存</string>
+    <string name="please_input_content">请输入任务内容</string>
+    <string name="time_similar">开始时间与结束时间不能相同</string>
+    <string name="save_success">保存成功！</string>
+    <string name="welcome">欢迎使用 每日心情 APP~~</string>
+    <string name="hint">您需同意该权限才能正常使用该APP~~</string>
+    <string name="create_card">新建任务卡片</string>
+    <string name="clear_all_cards">清空所有任务</string>
+    <string name="clear_success">清空成功！</string>
+    <string name="is_override">已有数据，是否覆盖？</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="cancel_success">取消成功！</string>
+    <string name="your_mood">您当天的心情</string>
+    <string name="is_clear_all">是否确定清空？</string>
+    <string name="empty_hint">空空如也，点击右下角添加心情卡片~~</string>
+    <string name="start">开始</string>
+    <string name="edit">编辑</string>
+    <string name="delete_success">删除成功！</string>
+    <string name="delete_fail">删除失败！</string>
+    <string name="edit_card">编辑心情卡片</string>
+    <string name="modify_success">修改成功！</string>
+    <string name="item_hint">点击日期查看，点击选中卡片左滑可编辑/删除</string>
+    <string name="existed_data">已有数据</string>
+
+
+
 </resources>

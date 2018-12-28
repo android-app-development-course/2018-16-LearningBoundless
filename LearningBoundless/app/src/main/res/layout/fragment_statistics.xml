@@ -1,7 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="46dp"
-    android:background="@drawable/blue_gradient_bg">
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_sean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20dp"
+        android:text="学习数据统计"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_sean">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/mPieChart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_alignParentTop="true"/>
+
+            <TextView
+                android:id="@+id/mPieChartTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="任务总体完成情况统计图"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/mPieChart"
+                android:textSize="10dp"
+                android:textColor="#40403f"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/mLineChart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@id/mPieChartTitleText"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/mLineChartTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学习轨迹走势图"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/mLineChart"
+                android:textSize="10dp"
+                android:textColor="#40403f"/>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/mBarChart"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@id/mLineChartTitleText"
+                />
+
+            <TextView
+                android:id="@+id/mBarChartTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学习轨迹统计图"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/mBarChart"
+                android:textSize="10dp"
+                android:textColor="#40403f"/>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
 
 </RelativeLayout>
