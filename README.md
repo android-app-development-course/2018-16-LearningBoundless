@@ -21,6 +21,12 @@
 
 > **学迹无涯(LearningBoundless)**
 
+
+
+<img src="/Screenshots/Project/app_icon.png" width=150 height=150/>
+
+
+
 <br/>
 
 ***
@@ -28,6 +34,12 @@
 ## 2. App Intro
 
 > 一款基于学习轨迹的好友（社交）监督App。
+
+<div align=center>
+<img src="/Screenshots/Project/splash_activity_bg.jpg" width=250 height=440 />
+</div>
+
+
 
 <br/>
 
