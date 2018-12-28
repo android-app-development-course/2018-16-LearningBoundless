@@ -78,8 +78,8 @@ public class StatisticsFragment extends Fragment {
     private final int FINISH_COLOR2 = ColorTemplate.JOYFUL_COLORS[1];
     private final int UNFINISH_COLOR2 = ColorTemplate.JOYFUL_COLORS[3];
 
-    private final int FINISH_COLOR3 = ColorTemplate.JOYFUL_COLORS[0];
-    private final int UNFINISH_COLOR3 = ColorTemplate.COLORFUL_COLORS[1];
+    private final int FINISH_COLOR3 = ColorTemplate.JOYFUL_COLORS[2];
+    private final int UNFINISH_COLOR3 = ColorTemplate.JOYFUL_COLORS[3];
 
     /**
      * 得到当前Fragment对应的布局文件的id
