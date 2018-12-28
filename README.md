@@ -70,11 +70,35 @@
 
 ***
 
+## 4. Project Structure 
 
-## 4. Promotion Channel
-![promotion](/Screenshots/Project/promotion.jpg)
+### 4.1 Android Project（参照企业级项目分包）
 
-<br/>
+> 出于实际考虑，因为要分工，每个人对于MVP的掌握程度不同，故使用传统的企业模块分包方法，各个模块解耦，方便后期整合和维护。
+
+
+
+
+
+![1](/Screenshots/Project/1.png)
+
+![2](/Screenshots/Project/2.png)
+
+![3](/Screenshots/Project/3.png)
+
+
+
+### 4.2 Spring Boot Project（简单搭建）
+
+![4](/Screenshots/Project/4.png)
+
+
+
+
+
+
+
+
 
 ***
 
@@ -365,5 +389,11 @@
 
 
 
+<br/>
 
+## 7. Promotion Channel
+
+![promotion](/Screenshots/Project/promotion.jpg)
+
+<br/>
 
