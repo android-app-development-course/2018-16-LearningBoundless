@@ -44,6 +44,16 @@ public class TimerActivity extends AppCompatActivity {
         finish();
     }
 
+
+    /**
+     * 按下回退按键触发计时中止动作
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        timerStopAction();
+    }
+
     /**
      * 添加计时结束动作
      */
