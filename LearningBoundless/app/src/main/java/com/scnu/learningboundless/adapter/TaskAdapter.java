@@ -13,9 +13,13 @@ import android.widget.Toast;
 import com.scnu.learningboundless.R;
 import com.scnu.learningboundless.activity.CreateTaskActivity;
 import com.scnu.learningboundless.activity.TaskDetailActivity;
+import com.scnu.learningboundless.activity.TimerActivity;
 import com.scnu.learningboundless.bean.task.Task;
 import com.scnu.learningboundless.db.TaskDao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -60,7 +64,25 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.mBtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CreateTaskActivity.actionEditStart(mContext, task.getStartTime());
+//                CreateTaskActivity.actionEditStart(mContext, task.getStartTime());
+                SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                Date startTime = null;
+                Date endTime = null;
+                String startTimeStr = task.getStartTime();
+                String endTimeStr = task.getEndTime();
+                try {
+                    startTime = dataFormat.parse(startTimeStr);
+                    endTime = dataFormat.parse(endTimeStr);
+                } catch (ParseException e){
+                    e.printStackTrace();
+                }
+                long startTimeSecond = startTime.getTime();
+                long endTimeSecond = endTime.getTime();
+                long totalTime = endTimeSecond - startTimeSecond;
+
+//                Date time = new Date(totalTime);
+
+                TimerActivity.actionStart(mContext, totalTime, startTimeStr);
             }
         });
 
