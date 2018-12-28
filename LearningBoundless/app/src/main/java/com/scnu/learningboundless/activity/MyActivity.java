@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
@@ -26,6 +27,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.scnu.learningboundless.R;
 import com.scnu.learningboundless.base.BaseActivity;
 
@@ -42,6 +44,12 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+//import jp.wasabeef.glide.transformations.BlurTransformation;
+//
+//import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
+//import jp.wasabeef.glide.transformations.BlurTransformation;
+//
+//import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 public class MyActivity extends BaseActivity {
 
@@ -50,8 +58,16 @@ public class MyActivity extends BaseActivity {
     public static final int SELECT_PIC = 0;//从相册选择
     @BindView(R.id.lv_personal_information)
     protected ListView mLvPersonalInformation;
+
     @BindView(R.id.iv_big_head)
     protected ImageView myHeadPhoto;
+
+//    @BindView(R.id.iv_headimage)
+//    protected ImageView iv_headimage;
+
+    @BindView(R.id.iv_head_bg)
+    protected ImageView iv_head_bg;
+
     private CharSequence[] its = {"拍照", "从相册选择"};
     private Uri imageUri; //图片路径
     private String filename; //图片名称
@@ -231,26 +247,49 @@ public class MyActivity extends BaseActivity {
                                 ActivityCompat.requestPermissions(MyActivity.this, new String[]{Manifest.permission.CAMERA}, 3);
                             }
                         } else {
-                            //图片名称 时间命名
-                            SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-                            Date date = new Date(System.currentTimeMillis());
-                            filename = format.format(date);  //图片名称 时间命名
-                            File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM); //保存在外部存储的路径
-                            File outputImage = new File(path, filename + ".jpg");
-                            try {
-                                if (outputImage.exists()) {
-                                    outputImage.delete();
+                            if (ContextCompat.checkSelfPermission(MyActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                //权限发生了改变 true  //  false,没有权限时
+                                if (ActivityCompat.shouldShowRequestPermissionRationale(MyActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                                    new AlertDialog.Builder(MyActivity.this).setTitle("title").setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // 请求授权
+                                            ActivityCompat.requestPermissions(MyActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
+                                        }
+                                    }).setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            //不请求权限的操作
+                                        }
+                                    }).create().show();
+                                } else {
+                                    ActivityCompat.requestPermissions(MyActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
                                 }
-                                outputImage.createNewFile();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            //将File对象转换为Uri并启动照相程序
+
+//                                申请权限，REQUEST_TAKE_PHOTO_PERMISSION是自定义的常量
+//                                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
+                            } else {
+                                //图片名称 时间命名
+                                SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+                                Date date = new Date(System.currentTimeMillis());
+                                filename = format.format(date);  //图片名称 时间命名
+                                File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM); //保存在外部存储的路径
+                                File outputImage = new File(path, filename + ".jpg");
+                                try {
+                                    if (outputImage.exists()) {
+                                        outputImage.delete();
+                                    }
+                                    outputImage.createNewFile();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                //将File对象转换为Uri并启动照相程序
 //                            imageUri = Uri.fromFile(outputImage);     //下面那句和这句的注释是用来避免运行时出现 曝光 错误
-                            imageUri = FileProvider.getUriForFile(MyActivity.this, MyActivity.this.getApplicationContext().getPackageName() + ".provider", outputImage);
-                            Intent tTntent = new Intent("android.media.action.IMAGE_CAPTURE"); //照相
-                            tTntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri); //指定图片输出地址
-                            startActivityForResult(tTntent, TAKE_PHOTO); //启动照相
+                                imageUri = FileProvider.getUriForFile(MyActivity.this, MyActivity.this.getApplicationContext().getPackageName() + ".provider", outputImage);
+                                Intent tTntent = new Intent("android.media.action.IMAGE_CAPTURE"); //照相
+                                tTntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri); //指定图片输出地址
+                                startActivityForResult(tTntent, TAKE_PHOTO); //启动照相
+                            }
                         }
 
                         break;
@@ -277,19 +316,23 @@ public class MyActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Bitmap photo;
-
+        Bitmap photo = null;
+        Uri extras;
         if (resultCode != RESULT_OK)
             return;
         switch (requestCode) {
             case SELECT_PIC://相册
-//                photo = data.getParcelableExtra("return-data");
-                photo = data.getExtras().getParcelable("data");
+                extras = data.getData();
+                try {
+                    photo = BitmapFactory.decodeStream(getContentResolver().openInputStream(extras));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 if (photo != null) {
-                    myHeadPhoto.setImageBitmap(toRoundBitmap(photo));//裁剪成圆形
-//                    //上传到服务器...
-//                    UserController.updateHeadImage(userId, headImage, handler);
-//                    photo.recycle();
+                    myHeadPhoto.setImageBitmap(photo);//设置/裁剪图片
+//                    iv_headimage.setImageBitmap(photo); //设置侧滑菜单的头像
+                    Glide.with(MyActivity.this).load(photo)     //设置头像后的背景为模糊图片
+                            .into(iv_head_bg);
                 }
                 break;
             case TAKE_PHOTO://相机            /***/
@@ -309,7 +352,14 @@ public class MyActivity extends BaseActivity {
                     Intent intentBc = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                     intentBc.setData(imageUri);
                     this.sendBroadcast(intentBc);
-                    startActivityForResult(intent, CROP_PHOTO); //设置裁剪参数显示图片至ImageView
+                    Bitmap bitmap1 = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                    myHeadPhoto.setImageBitmap(bitmap1);
+
+                    Glide.with(MyActivity.this).load(bitmap1) //设置头像后的背景为模糊图片
+                            .into(iv_head_bg);
+
+//                    iv_headimage.setImageBitmap(bitmap1);   //设置侧滑菜单的头像
+//                    startActivityForResult(intent, CROP_PHOTO); //设置裁剪参数显示图片至ImageView
                     break;
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -2,7 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/task_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/iv_back"
+            android:text="@string/back"
+            android:textColor="@android:color/white"
+            android:textSize="17sp" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +54,7 @@
             android:maxLines="1"
             android:layout_marginLeft="20dp"
             android:text="xxxx-xx-xx xx:xx"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="25sp" />
 
@@ -59,7 +85,7 @@
             android:maxLines="1"
             android:layout_marginLeft="20dp"
             android:text="xxxx-xx-xx xx:xx"
-            android:textColor="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
             android:textSize="25sp" />
 
@@ -88,6 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:maxLines="4"
+            android:textColor="@android:color/white"
             android:layout_marginLeft="20dp"
             android:textSize="20sp" />
 

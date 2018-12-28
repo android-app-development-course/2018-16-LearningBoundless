@@ -11,12 +11,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 import com.scnu.learningboundless.R;
 import com.scnu.learningboundless.adapter.MyFragmentPagerAdapter;
 import com.scnu.learningboundless.base.BaseActivity;
@@ -25,6 +28,7 @@ import com.scnu.learningboundless.fragment.FriendsFragment;
 import com.scnu.learningboundless.fragment.MessageFragment;
 import com.scnu.learningboundless.fragment.StatisticsFragment;
 import com.scnu.learningboundless.fragment.TaskFragment;
+import com.scnu.learningboundless.utils.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,7 +159,9 @@ public class MainActivity extends BaseActivity {
                 String msg = "";
                 switch (item.getItemId()) {
                     case R.id.item_a:
-                        msg += "Hello World!!!!!!!!!!!!";
+
+                        AddNewFriendActivity.actionStart(MainActivity.this);
+
                         break;
                     default:
                         break;
@@ -201,6 +207,8 @@ public class MainActivity extends BaseActivity {
 
                         break;
                     case R.id.item_three:
+
+                        logout();
                         Intent intent=new Intent(MainActivity.this,LoginActivity.class);
                         startActivity(intent);
 //                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content,new FriendsFragment()).commit();
@@ -217,7 +225,56 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+    /**
+     * 执行登出操作
+     */
+    private void logout() {
+        Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
+            @Override
+            public void run() {
+                EMClient.getInstance().logout(false, new EMCallBack() {
+                    @Override
+                    public void onSuccess() {
+                        // 关闭数据库
+                        Model.getInstance().getFriendAndInvitationManager().close();
 
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity.this, getResources().getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
+
+                                LoginActivity.actionStart(MainActivity.this);
+
+                                finish();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(int i, String s) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity.this, getResources().getString(R.string.login_failure) + s, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onProgress(int i, String s) {
+
+                    }
+                });
+            }
+        });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbarmenu,menu);          /**********/
+        return true;
+    }
     public static void actionStart(Context context) {
         context.startActivity(new Intent(context, MainActivity.class));
     }

@@ -4,18 +4,8 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/item_a"
-            android:icon="@drawable/message1"
-            android:title="动态"
+            android:icon="@drawable/add"
+            android:title="添加"
             app:showAsAction="always"></item>
-        <item
-            android:id="@+id/item_b"
-            android:icon="@drawable/setting"
-            android:title="设置"
-            app:showAsAction="never"></item>
-        <item
-            android:id="@+id/item_c"
-            android:icon="@drawable/quit"
-            android:title="退出"
-            app:showAsAction="never"></item>
     </group>
 </menu>

@@ -130,7 +130,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.et_start_time, R.id.et_end_time, R.id.btn_save})
+    @OnClick({R.id.et_start_time, R.id.et_end_time, R.id.btn_save, R.id.iv_back, R.id.tv_back})
     public void handleAllClick(View v) {
         switch (v.getId()) {
             case R.id.et_start_time:
@@ -144,6 +144,12 @@ public class CreateTaskActivity extends AppCompatActivity {
             case R.id.btn_save:
                 saveMoodCard();
                 break;
+
+            case R.id.iv_back:
+                finish();
+
+            case R.id.tv_back:
+                finish();
 
             default:
                 break;
@@ -211,8 +217,10 @@ public class CreateTaskActivity extends AppCompatActivity {
                 return;
             }
 
-            mStartDate = mStartYear+"-"+(mStartMonth + 1)+"-"+mStartDay+" "+mStartHour+":" +mStartMinute;
-            mEndDate = mStartYear+"-"+(mStartMonth + 1)+"-"+mStartDay+" "+mStartHour+":" +mStartMinute;
+            mStartDate=mTvStart.getText().toString();
+            mEndDate=mTvEnd.getText().toString();
+//            mStartDate = mStartYear+"-"+(mStartMonth + 1)+"-"+mStartDay+" "+mStartHour+":" +mStartMinute;
+//            mEndDate = mStartYear+"-"+(mStartMonth + 1)+"-"+mStartDay+" "+mStartHour+":" +mStartMinute;
             mContent = mEtContent.getText().toString();
             String num = mEtPriority.getText().toString();
             if( ! "".equals(num)){

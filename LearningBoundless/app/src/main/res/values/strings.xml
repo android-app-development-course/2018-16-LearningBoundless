@@ -94,5 +94,6 @@
 
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
+    <string name="logout_success">退出成功</string>
 
 </resources>
